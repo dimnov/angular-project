@@ -1,0 +1,14 @@
+<div *ngIf="favoriteBooks.length">
+  <mat-grid-list gutterSize="16" [cols]="4">
+    <mat-grid-tile *ngFor="let book of favoriteBooks">
+      <app-product-box [book]="book" class="cursor-pointer w-full" (addToCart)="onAddToCart($event)">
+      </app-product-box>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div *ngIf="!favoriteBooks.length" class="flex flex-col items-center justify-center p-8">
+  <p class="text-xl mb-4">Your favorite books will appear here.</p>
+  <button mat-raised-button routerLink="/" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+    Go to Home page
+  </button>
+</div>

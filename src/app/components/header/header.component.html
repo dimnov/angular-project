@@ -1,0 +1,75 @@
+<mat-toolbar class="max-w-full mx-auto border-x flex justify-between items-center">
+  <a routerLink="home">Book Store</a>
+
+  <div class="flex items-center space-x-2">
+    <div *ngIf="isSearchBarVisible" class="search-bar">
+      <form (ngSubmit)="submitForm(searchQuery)">
+        <button type="submit" class="p-0.5 m-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+          Search
+        </button>
+
+        <input type="text" name="searchQuery" [(ngModel)]="searchQuery" placeholder="Search for books..."
+          class="placeholder:font-extralight" />
+      </form>
+    </div>
+
+    <button mat-icon-button (click)="toggleSearchBar()">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="authService.isAuthenticated()" routerLink="/favorite">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menuCart">
+      <mat-icon [matBadge]="cartService.cartItemsQuantity | async"
+        [matBadgeHidden]="!(cartService.cartItemsQuantity | async)" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+
+    <mat-menu #menuCart="matMenu">
+      <div class="p-3 divide-y divide-solid">
+        <div class="pb-3 flex justify-between">
+          <span class="mr-16">{{cartService.cartItemsQuantity | async}} Item/s</span>
+          <a routerLink="cart">View Cart</a>
+        </div>
+        <div *ngIf="(cartService.cart | async)?.items as cartItems" class="py-3">
+          <div *ngFor="let item of cartItems" class="flex justify-between font-light mb-2">
+            {{item.name}} X {{item.quantity}}
+            <span class="font-bold">{{item.price | currency}}</span>
+          </div>
+
+          <div class="flex justify-between py-3 font-light">
+            Total:
+            <span class="font-bold">{{cartService.getTotal(cartItems) | currency}}</span>
+          </div>
+        </div>
+        <div class="pt-3 flex justify-between">
+          <button (click)="cartService.clearCart()" class="bg-rose-600 text-white rounded-full w-8 h-8">
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+          <button routerLink="cart" class="bg-green-600 text-white rounded-full w-8 h-8">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="menuAccount">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menuAccount="matMenu">
+      <button mat-menu-item *ngIf="authService.isAuthenticated()" routerLink="/profile">
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item *ngIf="authService.isAuthenticated()" (click)="authService.logout()">
+        <span>Logout</span>
+      </button>
+      <button mat-menu-item *ngIf="!authService.isAuthenticated()" routerLink="/login">
+        <span>Login</span>
+      </button>
+      <button mat-menu-item *ngIf="!authService.isAuthenticated()" routerLink="/register">
+        <span>Register</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

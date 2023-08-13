@@ -1,27 +1,30 @@
-# AngularProject
+# Book Store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+The project is an online book store that offers users the ability to browse, search, and purchase books. Users can manage their shopping cart, save favorite books, and complete purchases using the Stripe payment gateway. The application is built using Angular for the frontend and Firebase (Firestore) for the backend.
 
-## Development server
+## Key Features:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Homepage**: The main page displays a collection of available books for users to explore and purchase.
+- **Book Categories**: Users can filter books by specific categories using the category sidebar, making it easier to find books that match their interests.
+- **User Authentication**: Authentication functionality allows users to log in or register, providing a personalized experience.
+- **User Cart**: The cart icon displays the number of items in the user's cart. Clicking on the cart icon takes users to a dedicated cart page.
+- **Book Interaction**: Users can purchase books by clicking the "Buy" button on a book's page, or they can add books to their list of favorite items.
+- **Favorite Books (Logged-in Users Only)**: Logged-in users have access to a dedicated favorites page where they can view and purchase books they have favorited.
+- **Cart Management**: The cart page enables users to adjust the quantity of items, remove individual items, or clear the entire cart.
+- **Checkout**: Clicking the checkout button redirects users to the Stripe platform, where secure payment processing takes place.
+- **Stripe Integration**: The Stripe payment gateway securely handles the processing of payments. Users can provide address and debit card information without concerns about security.
 
-## Code scaffolding
+## Technologies Used:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: Angular (HTML, Tailwind CSS, TypeScript)
+- **Backend**: Firebase for authentication and Firestore for database storage
+- **Payment Processing**: Stripe
 
-## Build
+## How to Use:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Access the online book store to view the collection of available books on the homepage.
+- Utilize the category sidebar to narrow down book options based on preferred genres.
+- Register or log in using the provided buttons in the top-right corner of the site.
+- Engage with books by purchasing, adding them to your favorites list, or accessing detailed information.
+- Manage your cart by clicking on the cart icon, allowing you to adjust quantities, remove items, and proceed to checkout.
+- Follow the checkout process to securely complete your purchase through the integrated Stripe payment gateway.

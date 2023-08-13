@@ -1,0 +1,24 @@
+<div *ngIf="book" class="flex p-8 space-x-8 mb-8">
+  <div class="flex-none">
+    <img [src]="book.image" alt="{{ book.name }}" class="w-80 h-auto">
+  </div>
+  <div class="flex-grow">
+    <div class="space-y-4">
+      <h2 class="text-8xl font-semibold">{{ book.name }}</h2>
+      <div class="space-y-2 text-lg text-gray-700">
+        <p>{{ book.description }}</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4 mt-8">
+      <p class="text-xl font-semibold text-green-500">${{ book.price }}</p>
+      <button class="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600"
+        (click)="onAddToCart(book)">
+        Add to Cart
+      </button>
+      <button (click)="addToFavorites(book.id)"
+        [ngClass]="{'text-red-400': isFavorite(), 'text-gray-400': !isFavorite()}">
+        <mat-icon class="text-xl">favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
