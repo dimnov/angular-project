@@ -1,4 +1,4 @@
-# [Book Store](https://dimnov.github.io/angular-project/)
+# [Book Store](https://dimnov.github.io/book-store/)
 
 The project is an online book store that offers users the ability to browse, search, and purchase books. Users can manage their shopping cart, save favorite books, and complete purchases using the Stripe payment gateway. The application is built using Angular for the frontend and Firebase (Firestore) for the backend.
 
